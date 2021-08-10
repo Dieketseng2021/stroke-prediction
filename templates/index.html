@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+    <meta charset="UTF-8">
+    <title>ML API</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+<div class="login">
+    <h1>Stroke Prediction</h1>
+
+    <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}" method="post">
+
+        <label for="gender">Gender:</label>
+        <select name="gender" id="gender">
+            <option value="0">Female</option>
+            <option value="1">Male</option>
+            <option value="2">Other</option>
+        </select>
+        <br>
+
+        <label for="age">Age:</label>
+        <input type="text" id="age" name="age" placeholder="Age" required="required"/>
+        <br>
+
+        <label for="hypertension">Hypertension:</label>
+        <select name="hypertension" id="hypertension">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select>
+        <br>
+
+        <label for="heart_disease">Heart Disease:</label>
+        <select name="heart_disease" id="heart_disease">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select>
+        <br>
+
+        <label for="ever_married">Ever Married:</label>
+        <select name="ever_married" id="ever_married">
+            <option value="1">No</option>
+            <option value="0">Yes</option>
+        </select>
+        <br>
+
+        <label for="work_type">Work Type:</label>
+        <select name="work_type" id="work_type">
+            <option value="0">Self-employed</option>
+            <option value="1">Private</option>
+            <option value="2">Govt_job</option>
+            <option value="3">children</option>
+            <option value="4">Never_worked</option>
+        </select>
+        <br>
+
+        <label for="Residence_type">Residence Type:</label>
+        <select name="Residence_type" id="Residence_type">
+            <option value="0">Rural</option>
+            <option value="1">Urban</option>
+        </select>
+        <br>
+
+        <label for="avg_glucose_level">Average Glucose Level:</label>
+        <input type="text" id="avg_glucose_level" name="avg_glucose_level" placeholder="Average Glucose Level"
+               required="required"/>
+        <br>
+
+        <label for="bmi">Body Mass Index:</label>
+        <input type="text" id="bmi" name="bmi" placeholder="Body Mass Index" required="required"/>
+        <br>
+
+        <label for="smoking_status">Smoking Status:</label>
+        <select name="smoking_status" id="smoking_status">
+            <option value="0">formerly smoked</option>
+            <option value="1">never smoked</option>
+            <option value="2">smokes</option>
+            <option value="3">Unknown</option>
+        </select>
+        <br>
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict Stroke</button>
+    </form>
+
+    <br>
+    <br>
+    {{ prediction_text }}
+
+</div>
+
+
+</body>
+</html>
